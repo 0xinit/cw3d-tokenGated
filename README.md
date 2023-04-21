@@ -18,6 +18,8 @@ This token gated component verifies if users possess an Alchemy University Early
     - `RestrictedAccess.jsx` component with `RestrictedAccess.module.css` -- the first page that users see before connecting their wallets. They won't be able to access the page without connecting their wallet and verify it.
     - `NoAuNft.jsx` component should be copied along with `NoAuNft.module.css`. -- displayed if the user doesn't own an AU NFT.
     - Add `AlchemyDaoMinter.jsx` component along with `AlchemyDaoMinter.module.css`.
+    - We should also import `NftMinter.jsx` and `NftMinter.module.css` created by Vitto. We are reusing this to show two options between either minting CW3D NFT or AU DAO Token.
+4. Don't forget to add all these imports into `TokenGated.jsx` and `index.jsx`.
 
 After completing these steps, the code can be implemented. To consolidate the code into a single large component, transfer all code from smaller components to `TokenGated.jsx`. However, it's good practice to maintain separate, reusable components.
 &nbsp;
