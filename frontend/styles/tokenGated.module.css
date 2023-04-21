@@ -9,8 +9,10 @@
     flex-direction: column;
     align-items: center;
     margin-top: 15rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
-
 
 .connectWallet,
 .verifyNFT {
