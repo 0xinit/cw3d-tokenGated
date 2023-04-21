@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/RestrictedAccess.module.css';
 
 const RestrictedAccess = () => {
+    // added the blue heart emoji
     const blueHeart = "\u{1F499}";
     return (
         <div className={styles.restrictedContainer}>

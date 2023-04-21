@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/NoAuNft.module.css';
 
 const NoAuNft = ({ walletAddress, contractAddress }) => {
+  // adding the sad Face emoji
   const sadFace = "\u{1F622}";
   return (
     <div className={styles.noAccessContainer}>
