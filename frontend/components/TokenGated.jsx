@@ -5,7 +5,7 @@ import NftMinter from "../components/NftMinter";
 import AlchemyDaoMinter from "../components/AlchemyDaoMinter";
 import contract from "../abi/CreateWeb3DappNFT.json";
 import NoAuNft from "./NoAuNft";
-import styles from "../styles/tokenGated.module.css";
+import styles from "../styles/TokenGated.module.css";
 
 
 export default function TokenGated() {
