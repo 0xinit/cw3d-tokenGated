@@ -2,19 +2,24 @@ import React, { useEffect, useState } from "react";
 import RestrictedAccess from "./RestrictedAccess";
 import { useAccount } from "wagmi";
 import NftMinter from "../components/NftMinter";
+import AlchemyDaoMinter from "../components/AlchemyDaoMinter";
 import contract from "../abi/CreateWeb3DappNFT.json";
 import NoAuNft from "./NoAuNft";
+import styles from "../styles/tokenGated.module.css";
+
 
 export default function TokenGated() {
     const [isNftOwner, setIsNftOwner] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    // State variable to manage the selected minting option
+    const [selectedOption, setSelectedOption] = useState("");
     const { address: walletAddress, isConnected, isDisconnected } = useAccount();
+    const [isMounted, setIsMounted] = useState(false);
 
     // Inputting the contract address manually for Alchemy Early Access NFT
     const contractAddress = "0x60576A64851C5B42e8c57E3E4A5cF3CF4eEb2ED6";
     // Inputting the chain manually for now
     const chain = "MATIC_MAINNET";
-    const [isMounted, setIsMounted] = useState(false);
 
     const checkNftOwnership = async () => {
         setIsLoading(true);
@@ -49,6 +54,10 @@ export default function TokenGated() {
         }
     }, [walletAddress, contractAddress, chain, isMounted]);
 
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+    };
+
     if (!isMounted) {
         return null;
     }
@@ -57,25 +66,49 @@ export default function TokenGated() {
         return <div>Loading...</div>;
     }
 
+
     return (
         <>
             {isDisconnected ? (
                 <RestrictedAccess />
             ) : isNftOwner ? (
-                <div>
-                    {/* The wallet address {walletAddress} owns the NFT from the contract
-                    address {contractAddress}!
-                     */}
-                    <NftMinter
-                        contractAddress={"0x9FaCAf075Cda7C0947DA0F0B4164332e01422E97"}
-                        tokenUri={
-                            "https://ipfs.filebase.io/ipfs/QmcZMwBfYwRfysPyLaJzMk5RwsgXnVz7JDkbh6eRbAfSjJ/QmdeEmVuLKxhy63CfLkt193sYTRHLLCH6qzyghBS27k7uJ"
-                        }
-                        abi={contract.abi}
-                    />
+                <div className={styles.tokenGatedContainer}>
+                    {/* Render buttons to select the minting option */}
+                    {!selectedOption && (
+                        <div>
+                            <button
+                                className={styles.mintButton}
+                                onClick={() => handleOptionClick("cw3d")}
+                            >
+                                Mint CW3D Alchemy NFT
+                            </button>
+                            <button
+                                className={styles.mintButton}
+                                onClick={() => handleOptionClick("alchemyDao")}
+                            >
+                                Mint Alchemy DAO Token
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Conditionally render the selected minting component */}
+                    {selectedOption === "cw3d" && (
+                        <NftMinter
+                            contractAddress={"0x9FaCAf075Cda7C0947DA0F0B4164332e01422E97"}
+                            tokenUri={
+                                "https://ipfs.filebase.io/ipfs/QmcZMwBfYwRfysPyLaJzMk5RwsgXnVz7JDkbh6eRbAfSjJ/QmdeEmVuLKxhy63CfLkt193sYTRHLLCH6qzyghBS27k7uJ"
+                            }
+                            abi={contract.abi}
+                        />
+                    )}
+                    {selectedOption === "alchemyDao" && (
+                        <AlchemyDaoMinter
+                            walletAddress={walletAddress} />
+                    )}
                 </div>
             ) : (
-                <NoAuNft walletAddress={walletAddress} contractAddress={contractAddress} />
+                <NoAuNft walletAddress={walletAddress} contractAddress={contractAddress}
+                />
             )}
         </>
     );
