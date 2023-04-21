@@ -1,13 +1,14 @@
 import React from 'react';
-import '../styles/Restricted.module.css';
+import styles from '../styles/RestrictedAccess.module.css';
 
 const RestrictedAccess = () => {
     return (
-        <div className="restricted-container">
-            <div className="restricted-box">
-                <h1 className="restricted-title">Restricted Page</h1>
-                <p className="restricted-text">
-                    You need to hold Alchemy Early Access NFT to access the Minting page.
+        <div className={styles.restrictedContainer}>
+            <div className={styles.restrictedBox}>
+                <h1 className={styles.restrictedTitle}>Restricted Page</h1>
+                <p className={styles.restrictedText}>
+                    The dapp you're trying to access to mint an NFT is token-gated,
+                    and you need to have an Alchemy Early access NFT to mint a CW3D NFT.
                 </p>
             </div>
         </div>
