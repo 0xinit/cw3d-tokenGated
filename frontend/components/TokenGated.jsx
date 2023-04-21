@@ -3,6 +3,7 @@ import RestrictedAccess from "./RestrictedAccess";
 import { useAccount } from "wagmi";
 import NftMinter from "../components/NftMinter";
 import contract from "../abi/CreateWeb3DappNFT.json";
+import NoAuNft from "./NoAuNft";
 
 export default function TokenGated() {
     const [isNftOwner, setIsNftOwner] = useState(false);
@@ -74,9 +75,7 @@ export default function TokenGated() {
                     />
                 </div>
             ) : (
-                <div>
-                    The wallet address {walletAddress} does not own the NFT from the contract address {contractAddress}.
-                </div>
+                <NoAuNft walletAddress={walletAddress} contractAddress={contractAddress} />
             )}
         </>
     );
