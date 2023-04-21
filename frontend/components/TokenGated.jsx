@@ -21,6 +21,7 @@ export default function TokenGated() {
     // Inputting the chain manually for now
     const chain = "MATIC_MAINNET";
 
+    // checking ownership of the AU NFT with alchemy APIs
     const checkNftOwnership = async () => {
         setIsLoading(true);
 
@@ -69,6 +70,7 @@ export default function TokenGated() {
 
     return (
         <>
+            {/* if user is disconnected, then load restricted page */}
             {isDisconnected ? (
                 <RestrictedAccess />
             ) : isNftOwner ? (
@@ -92,6 +94,7 @@ export default function TokenGated() {
                     )}
 
                     {/* Conditionally render the selected minting component */}
+                    {/* When User selects to mint CW3D NFT */}
                     {selectedOption === "cw3d" && (
                         <NftMinter
                             contractAddress={"0x9FaCAf075Cda7C0947DA0F0B4164332e01422E97"}
@@ -101,12 +104,14 @@ export default function TokenGated() {
                             abi={contract.abi}
                         />
                     )}
+                    {/* When user selects Alchemy DAO token*/}
                     {selectedOption === "alchemyDao" && (
                         <AlchemyDaoMinter
                             walletAddress={walletAddress} />
                     )}
                 </div>
             ) : (
+                // if the user doesn't own any AU NFT then show this
                 <NoAuNft walletAddress={walletAddress} contractAddress={contractAddress}
                 />
             )}
