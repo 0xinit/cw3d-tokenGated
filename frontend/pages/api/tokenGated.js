@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
     try {
         const isNftOwner = await alchemy.nft.verifyNftOwnership(address, contractAddress);
-        console.log(isNftOwner);
+        // console.log(isNftOwner);
         res.status(200).json({ isNftOwner });
     }
     catch (e) {
