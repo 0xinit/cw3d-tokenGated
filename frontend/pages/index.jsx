@@ -1,14 +1,14 @@
 import styles from "../styles/Home.module.css";
 import TokenGated from "../components/TokenGated";
-import TestTokenGated from "../components/TestTokenGated";
 
 export default function Home() {
   return (
     <div>
-      <main className={styles.main}>
+      {/* <main className={styles.main}> */}
+      <main>
         {/* <TokenGated></TokenGated> */}
-        <TestTokenGated />
-
+        {/* <TestTokenGated /> */}
+        <TokenGated />
       </main>
     </div>
   );
