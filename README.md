@@ -15,7 +15,7 @@ This token gated component verifies if users possess an Alchemy University Early
 1. Copy Paste `tokenGated.js` in ./frontend/pages/api
 2. Copy Paste `TokenGated.jsx` in ./components and `TokenGated.module.css` in ./styles/
 3. Copy Paste additional components that are used by `TokenGated.jsx` component. These are the components and their respective stylings (place them into ./components/ and ./styles/ respectively):
-    - `RestrictedAccess.jsx` component with `RestrictedAccess.module.css` -- the first page that users see before connecting their wallets. They wont be able to They won't be able to access the page without connecting their wallet and verify it.
+    - `RestrictedAccess.jsx` component with `RestrictedAccess.module.css` -- the first page that users see before connecting their wallets. They won't be able to access the page without connecting their wallet and verify it.
     - `NoAuNft.jsx` component should be copied along with `NoAuNft.module.css`. -- displayed if the user doesn't own an AU NFT.
     - Add `AlchemyDaoMinter.jsx` component along with `AlchemyDaoMinter.module.css`.
 
@@ -24,7 +24,7 @@ After completing these steps, the code can be implemented. To consolidate the co
 
 #### But, Why would you need a component for Token Gating?
 
-After brainstorming and conducting a Twitter poll, it became apparent that many projects in hackathons involve building NFTs, DAOs, and similar dApps. Often, these dApps are built on top of other protocols like Lens Protocol or Worldcoin, but there is no readily available code for token gating to authenticate NFT ownership. Due to the lack of resources, hackathon participants or builders must create their own token authentication, which can be time-consuming. Because of lack of resources, hackathon particpants or builders, in general, need to come up with something that authenticates for a token present in the wallet. The extra research, styling, and so on takes away a lot of time.
+After brainstorming and conducting a Twitter poll, it became apparent that many projects in hackathons involve building NFTs, DAOs, and similar dApps. Often, these dApps are built on top of other protocols like Lens Protocol or Worldcoin, but there is no readily available code for token gating to authenticate NFT ownership. Due to the lack of resources, hackathon participants or builders must create their own token authentication, which can be time-consuming. Because of lack of resources, hackathon participants or builders, in general, need to come up with something that authenticates for a token present in the wallet. The extra research, styling, and so on takes away a lot of time.
 
 To address this issue, I developed a component that provides instant token gating for dApps with a simple copy and paste process.
 
@@ -34,7 +34,7 @@ We utilize Alchemy's NFT APIs `verifyNftOwnership` to achieve this. The `verifyN
 
 #### But, where can I go and market this app, and what can I do to have most of the people use it? How can we expand its usecase?
 
-After brainstorming for a long time, I think the number one usecase for CW3D remains in every builders heart. It is not just specifically for any hackathon as such, but can be used by anyone from a student getting into web3 development to a team of professionals starting their new project. Same goes for a token-gated component that I have built. How so? Because I want to expand it further to fully be able to mint DAO tokens for any DAO. Imagine Alchemy University coming with its own DAO, and we use this token-gate component for people to first verify their holdings of AU NFT and then letting them mint the tokens. 
+After brainstorming for a long time, I think the number one usecase for CW3D remains in every bbuilder's heart. It is not just specifically for any hackathon as such, but can be used by anyone from a student getting into web3 development to a team of professionals starting their new project. Same goes for a token-gated component that I have built. How so? Because I want to expand it further to fully be able to mint DAO tokens for any DAO. Imagine Alchemy University coming with its own DAO, and we use this token-gate component for people to first verify their holdings of AU NFT and then letting them mint the tokens. 
 
 The use case can be further expanded to token-gating communities and other projects. For example, I envision expanding this component to DeFi dashboards. This would involve creating an analytical DeFi dashboard integrated with OpenSea sales and other trading dashboards, which users can access only if they own a specific NFT. Marketing the component to the right types of builders is crucial.
 
